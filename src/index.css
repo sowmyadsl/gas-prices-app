@@ -5,6 +5,9 @@ body {
     sans-serif;
   top: 0;
   left: 1;
+  background-color: white;
+  /* background-color: #E9ECF1; */
+  /* background-image: url("/Gas_Station.jpg"); */
 }
 
 code {

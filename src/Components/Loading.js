@@ -1,7 +1,25 @@
 import React from "react";
+import PulseLoader from "react-spinners/PulseLoader";
 
-function Loading() {
-  return <div>Loading...</div>;
+const loadingStyle = `
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height: 80vh;
+`;
+
+function Loading(loading) {
+  return (
+    <div>
+      <PulseLoader
+        css={loadingStyle}
+        size={15}
+        color={"#05B6BF"}
+        loading={loading}
+      />
+    </div>
+  );
 }
 
 export default Loading;
