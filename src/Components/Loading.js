@@ -11,7 +11,7 @@ const loadingStyle = `
 
 function Loading(loading) {
   return (
-    <div>
+    <div data-testid="spinner">
       <PulseLoader
         css={loadingStyle}
         size={15}
