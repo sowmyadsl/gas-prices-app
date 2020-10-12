@@ -10,9 +10,17 @@ This is a simple gas prices finder application where the following features are 
 - Error handling
 
 
-### Landing Page with Results 
+### Results Page
 
 ![Results Image](/public/landing-page.png)
+
+### Loading State 
+
+![Loading] (/public/loading.png)
+
+### Error State
+
+![Error] (/public/error-page.png)
 
 ### `Scripts to Run the Project`
 

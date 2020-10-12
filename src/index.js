@@ -8,7 +8,6 @@ import store from "./state/store";
 import { bindActionCreators } from "redux";
 import getStationsAction from "./utils/stationUtils";
 
-
 const mapStateToProps = state => state;
 
 const mapDispatchToProps = dispatch => bindActionCreators({

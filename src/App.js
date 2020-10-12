@@ -15,7 +15,6 @@ const Body = styled.div`
   margin-top: ${(props) => props.dataExists ? "32vh" : "12vh"};
 `;
 
-
 /**
  * App Component
  * @param {object} props - Component props

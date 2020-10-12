@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 const AppFooter = styled.div`
-    width: 100%
     background-color: red;
     background-color: #3c3d48;
     display: flex;
@@ -14,6 +13,9 @@ const AppFooter = styled.div`
     height: 5vh;
     padding: 0 1vw;
     width: 98vw;
+    height: 50px;
+    width: 100%;
+    bottom: 0px;
 
 `;
 

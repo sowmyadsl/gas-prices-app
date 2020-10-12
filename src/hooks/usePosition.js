@@ -7,7 +7,7 @@ function usePosition(latitude, longitude) {
   const [position, setPosition] = useState({});
   const defaultOptions = {
     enableHighAccuracy: true,
-    timeout: 10000,
+    timeout: Infinity,
     maximumAge: 0
   };
 

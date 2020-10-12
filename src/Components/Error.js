@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { BiErrorCircle } from "react-icons/bi"
 
 const ErrorMessage = styled.div`
   display: flex;
@@ -8,11 +9,13 @@ const ErrorMessage = styled.div`
   margin: auto;
   height: 100vh;
   color: Red;
-  background-color: lightgrey;
+  font-style: italic;
+  padding: 5vw;
 `;
 
 const Error = ({ error }) => (
   <ErrorMessage>
+    <BiErrorCircle/>
     {error}
   </ErrorMessage>
 );
