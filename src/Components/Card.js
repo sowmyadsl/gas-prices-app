@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from 'prop-types';
 import CardIcon from "./CardIcon";
 import CardPrice from "./CardPrice";
 import CARD_TYPES from "../constants/cardTypes";
 import CardChip from "./Chip";
-
 
 const WithUpsell = styled.div`
   display: flex;
@@ -73,6 +73,11 @@ const CardAddressText = styled.div`
   font-weight: 600;
 `;
 
+/**
+ *  Card Component 
+ * @param {object} props - component props
+ * @returns {JSX} react component
+ */
 const Card = ({ station, type }) => {
   let upSellIndicator = null;
   switch (type) {
@@ -86,13 +91,13 @@ const Card = ({ station, type }) => {
   };
 
   return (
-    <WithUpsell>
+    <WithUpsell data-testid='card'>
       {upSellIndicator}
       <CardWrapper className="result-card" type={type}>
         <CardContent>
-          <CardHeader>
+          <CardHeader data-testid="card-header">
             <CardIcon station={station} />
-            <CardTitle>{station.station_name}</CardTitle>
+            <CardTitle data-testid="card-title">{station.station_name}</CardTitle>
           </CardHeader>
           <CardBody>
             <CardAddressText>
@@ -110,5 +115,10 @@ const Card = ({ station, type }) => {
     </WithUpsell>
   );
 };
+
+Card.propTypes = {
+  station: PropTypes.object.isRequired,
+  type: PropTypes.string.isRequired,
+}
 
 export default Card;

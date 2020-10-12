@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import CARD_TYPES from "../constants/cardTypes";
 
-const Chip = styled.span`
+const CardChip = styled.span`
 overflow: hidden;
 white-space: nowrap;
 padding: 4px 12px;
@@ -19,9 +20,18 @@ margin-bottom: -2em;
 z-index: 500;
 `;
 
-const CardChip = (props) => {
-return <Chip color={props.color} >{props.children}</Chip>;
+/**
+ *  Chip Component 
+ * @param {object} props - component props
+ * @returns {JSX} react component
+ */
+const Chip = (props) => {
+return <CardChip color={props.color} >{props.children}</CardChip>;
 }
 
-export default CardChip;
+Chip.propTypes = {
+    color: PropTypes.string.isRequired,
+  };
+
+export default Chip;
 

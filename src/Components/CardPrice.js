@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const Price = styled.div`
@@ -11,8 +12,17 @@ const Price = styled.div`
   line-height: 3;
 `;
 
+/**
+ *  CardPrice Component 
+ * @param {object} props - component props
+ * @returns {JSX} react component
+ */
 function CardPrice({ price = 0 }) {
   return <Price>${price.toFixed(2)}</Price>;
+}
+
+CardPrice.propTypes = {
+  price: PropTypes.number.isRequired,
 }
 
 export default CardPrice;

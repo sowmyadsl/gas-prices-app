@@ -1,49 +1,56 @@
-import React, { useState, useEffect } from "react";
-import styled from 'styled-components';
+import React, { useEffect } from "react";
+import styled from "styled-components";
 import usePosition from "./hooks/usePosition";
-import fetchStations from "./services/fetchStations";
 import CardList from "./Components/CardList";
 import Loading from "./Components/Loading";
-import AppHeader from './Components/AppHeader';
-import generateGasPrice from "./utils/stationUtils";
-import "./App.css";
-
+import Error from "./Components/Error";
+import AppHeader from "./Components/AppHeader";
+import { setLocation } from './state/actions';
+import Footer from "./Components/Footer";
 
 const Body = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: ${(props) => props.dataExists ? "32vh" : "12vh"};
 `;
 
-function App() {
-  const [stations, setStations] = useState([]);
+
+/**
+ * App Component
+ * @param {object} props - Component props
+ * @returns {JSX} react component
+ */
+const App = props => {
+  const {
+    zipcode,
+    stations,
+    loading,
+    error,
+    dispatch,
+    getStations
+  } = props;
   const { latitude, longitude } = usePosition();
 
   useEffect(() => {
-    fetchData();
-  }, [latitude, longitude]);
-
-  const fetchData = async () => {
-    if (!latitude || !longitude) return;
-    const data = await fetchStations(latitude, longitude);
-    const filteredStations = data.fuel_stations.filter(
-      station => station.access_code.toLowerCase() === "public"
-    );
-    const withPrice = filteredStations.map(station => {
-      return {...station, price: generateGasPrice(3)}
-    });
-    setStations(withPrice);
-  };
+    zipcode ? dispatch(setLocation({ zipcode })) : dispatch(setLocation({ latitude, longitude }));
+    getStations(latitude, longitude, zipcode);
+  }, [latitude, longitude, zipcode, dispatch, getStations]);
 
   return (
     <div className="app-layout">
-      <AppHeader className="app-header" text={"Gas Prices App"} />
-      <Body>
-        {stations && stations.length ? (
-          <CardList stations={stations} />
-        ) : (
-            <Loading loading={true} />
-          )}
-      </Body>
+      <AppHeader className="app-header" stations={stations} dispatch={dispatch} zipcode={zipcode} />
+      {error ? <Error error={error} /> : (
+        <Body dataExists={stations.length > 0}>
+          {loading && <Loading loading={loading} />}
+          {stations && stations.length ? (
+            <CardList stations={stations} />
+          ) : null}
+        </Body>
+      )}
+      <Footer />
     </div>
   );
-}
+};
 
 export default App;

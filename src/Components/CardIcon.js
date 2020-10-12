@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 
 const Icon = styled.div`
@@ -45,13 +46,22 @@ const mapStationToLogoName = stationName => {
   return name;
 };
 
+/**
+ *  CardIcon Component 
+ * @param {object} props - component props
+ * @returns {JSX} react component
+ */
 function CardIcon({ station }) {
   const name = mapStationToLogoName(station.station_name);
   return (
     <Icon>
-      <CardLogo src={`//logo.clearbit.com/${name}.com`} />
+      <CardLogo data-testid="card-icon" src={`//logo.clearbit.com/${name}.com`} />
     </Icon>
   );
+}
+
+CardIcon.propTypes = {
+  station: PropTypes.object.isRequired,
 }
 
 export default CardIcon;
