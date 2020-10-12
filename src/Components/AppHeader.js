@@ -26,7 +26,7 @@ const Header = styled.div`
   width: 100%;
 `;
 const HeaderTitle = styled.div`
-  font-size: 5vw;
+  font-size: calc(2em + 1vw);
   text-align: center;
   padding-left: 3%;
   min-width: 15vw;

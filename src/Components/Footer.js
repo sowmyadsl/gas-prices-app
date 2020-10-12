@@ -20,15 +20,15 @@ const AppFooter = styled.div`
 const StyledLink = styled.a`
     text-decoration: none;
     color: #e9ecf1;
-    font-size: 2vw;
+    font-size: calc(0.5em + 0.5vw);
     max-width: 40vw;
-    padding: 1vw;
+    padding: 0 1vw;
 
 `;
 
 const CopyRight = styled.span`
-font-size: 2vw;
-padding: 1vw;
+font-size: calc(0.5em + 0.5vw);
+padding: 0 1vw;
 
 `;
 
