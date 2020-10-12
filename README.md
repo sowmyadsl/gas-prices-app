@@ -16,11 +16,11 @@ This is a simple gas prices finder application where the following features are 
 
 ### Loading State 
 
-![Loading] (/public/loading.png)
+![Loading](/public/loading.png)
 
 ### Error State
 
-![Error] (/public/error-page.png)
+![Error](/public/error-page.png)
 
 ### `Scripts to Run the Project`
 
