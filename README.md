@@ -2,17 +2,18 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Description
 
-This is a simple gas prices finder application where the following features are being added:
+This app allows the user to find nearby gas stations using user's device location or by entering zipcode into the search bar.
+
+The following features are included:
 
 - Derives user location from geoLocation API
 - Retrieves gas stations from nrel.gov API
 - Load nearby stations using user location or zipcode using search 
 - Error handling
 
-
 ### Results Page
 
-![Results Image](/public/landing-page.png)
+![Results Image](/public/results-page.png)
 
 ### Loading State 
 
@@ -21,6 +22,10 @@ This is a simple gas prices finder application where the following features are 
 ### Error State
 
 ![Error](/public/Error-page.png)
+
+### Empty State
+
+![Empty](/public/empty-page.png)
 
 ### `Scripts to Run the Project`
 
