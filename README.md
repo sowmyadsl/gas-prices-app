@@ -12,7 +12,7 @@ This is a simple gas prices finder application where the following features are 
 
 ### Results Page
 
-![Results Image](/public/landing-page.png)
+![Results Image](/public/results-page.png)
 
 ### Loading State 
 
@@ -20,7 +20,11 @@ This is a simple gas prices finder application where the following features are 
 
 ### Error State
 
-![Error](/public/Error-page.png)
+![Error](/public/error-page.png)
+
+### Empty State
+
+![Empty](/public/empty-page.png)
 
 ### `Scripts to Run the Project`
 
