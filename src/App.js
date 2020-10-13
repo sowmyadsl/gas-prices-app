@@ -52,6 +52,7 @@ const App = (props) => {
     }
   }, [latitude, longitude, zipcode, dispatch, getStations]);
 
+  // Handles Empty state 
   let displayList = null;
   const emptyList = (
     <EmptyList>
@@ -62,6 +63,7 @@ const App = (props) => {
     </EmptyList>
   );
 
+  // Handles londing state
   if (!loading) {
     if (stations && stations.length) {
       displayList = <CardList stations={stations} />;
