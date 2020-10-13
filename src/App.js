@@ -7,12 +7,21 @@ import Error from "./Components/Error";
 import AppHeader from "./Components/AppHeader";
 import { setLocation } from './state/actions';
 import Footer from "./Components/Footer";
+import { FaExclamationTriangle } from "react-icons/fa";
 
 const Body = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: ${(props) => props.dataExists ? "32vh" : "12vh"};
+`;
+const EmptyList = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height: 81vh;
 `;
 
 /**
@@ -32,7 +41,9 @@ const App = props => {
   const { latitude, longitude } = usePosition();
 
   useEffect(() => {
-    if (latitude && longitude) {
+    if (zipcode) {
+      dispatch(setLocation({ latitude: '', longitude: '', zipcode }))
+    } else if (latitude && longitude) {
       dispatch(setLocation({ latitude, longitude, zipcode: '' }));
     }
     if ((latitude && longitude) || zipcode) {
@@ -40,15 +51,33 @@ const App = props => {
     }
   }, [latitude, longitude, zipcode, dispatch, getStations]);
 
+  let displayList = null;
+  const emptyList = (
+    <EmptyList>
+      <FaExclamationTriangle />
+      <span>
+        No Gas, buddy!
+      </span>
+    </EmptyList>
+  );
+
+  if (!loading) {
+    if (stations && stations.length) {
+      displayList = <CardList stations={stations} />
+    }
+    else {
+      displayList = emptyList
+    }
+  }
+
+
   return (
     <div className="app-layout">
       <AppHeader className="app-header" stations={stations} dispatch={dispatch} zipcode={zipcode} />
       {error ? <Error error={error} /> : (
         <Body dataExists={stations.length > 0}>
           {loading && <Loading loading={loading} />}
-          {stations && stations.length ? (
-            <CardList stations={stations} />
-          ) : null}
+          {displayList}
         </Body>
       )}
       <Footer />

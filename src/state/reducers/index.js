@@ -39,6 +39,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
+        stations: [],
         error: action.error
       };
     default:

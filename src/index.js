@@ -6,7 +6,7 @@ import * as serviceWorker from "./serviceWorker";
 import { Provider, connect } from "react-redux";
 import store from "./state/store";
 import { bindActionCreators } from "redux";
-import getStationsAction from "./utils/stationUtils";
+import getStationsAction from "./middleware/getStations";
 
 const mapStateToProps = state => state;
 
