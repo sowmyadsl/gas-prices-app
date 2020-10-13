@@ -1,19 +1,20 @@
-import React, { useEffect } from "react";
-import styled from "styled-components";
-import usePosition from "./hooks/usePosition";
-import CardList from "./Components/CardList";
-import Loading from "./Components/Loading";
-import Error from "./Components/Error";
-import AppHeader from "./Components/AppHeader";
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { FaExclamationTriangle } from 'react-icons/fa';
+import usePosition from './hooks/usePosition';
+import CardList from './Components/CardList';
+import Loading from './Components/Loading';
+import Error from './Components/Error';
+import AppHeader from './Components/AppHeader';
 import { setLocation } from './state/actions';
-import Footer from "./Components/Footer";
-import { FaExclamationTriangle } from "react-icons/fa";
+import Footer from './Components/Footer';
 
 const Body = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: ${(props) => props.dataExists ? "32vh" : "12vh"};
+  margin-top: ${(props) => (props.dataExists ? '32vh' : '12vh')};
 `;
 const EmptyList = styled.div`
   display: flex;
@@ -29,20 +30,20 @@ const EmptyList = styled.div`
  * @param {object} props - Component props
  * @returns {JSX} react component
  */
-const App = props => {
+const App = (props) => {
   const {
     zipcode,
     stations,
     loading,
     error,
     dispatch,
-    getStations
+    getStations,
   } = props;
   const { latitude, longitude } = usePosition();
 
   useEffect(() => {
     if (zipcode) {
-      dispatch(setLocation({ latitude: '', longitude: '', zipcode }))
+      dispatch(setLocation({ latitude: '', longitude: '', zipcode }));
     } else if (latitude && longitude) {
       dispatch(setLocation({ latitude, longitude, zipcode: '' }));
     }
@@ -63,13 +64,11 @@ const App = props => {
 
   if (!loading) {
     if (stations && stations.length) {
-      displayList = <CardList stations={stations} />
-    }
-    else {
-      displayList = emptyList
+      displayList = <CardList stations={stations} />;
+    } else {
+      displayList = emptyList;
     }
   }
-
 
   return (
     <div className="app-layout">
@@ -83,6 +82,26 @@ const App = props => {
       <Footer />
     </div>
   );
+};
+
+App.propTypes = {
+  zipcode: PropTypes.string,
+  stations: PropTypes.arrayOf(
+    PropTypes.shape({
+      station_name: PropTypes.string.isRequired,
+      street_address: PropTypes.string.isRequired,
+      distance: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.string,
+  dispatch: PropTypes.func.isRequired,
+  getStations: PropTypes.func.isRequired,
+};
+
+App.defaultProps = {
+  zipcode: '',
+  error: '',
 };
 
 export default App;

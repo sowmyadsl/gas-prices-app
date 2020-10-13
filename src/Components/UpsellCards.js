@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Card from "./Card";
-import styled from "styled-components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Card from './Card';
 import { getCheapestStation, getClosestStation } from '../utils/stationUtils';
 import CARD_TYPES from '../constants/cardTypes';
 
@@ -16,27 +16,27 @@ const Upsell = styled.div`
 `;
 
 function UpsellCards({ stations = [] }) {
-    if (!stations.length) return null;
+  if (!stations.length) return null;
 
-    const cheapestStation = getCheapestStation(stations);
-    const closestStation = getClosestStation(stations);
+  const cheapestStation = getCheapestStation(stations);
+  const closestStation = getClosestStation(stations);
 
-    return (
-        <Upsell>
-            {<Card key="cheapest" station={cheapestStation} type={CARD_TYPES.cheapest} />}
-            {<Card key="closest" station={closestStation} type={CARD_TYPES.closest} />}
-        </Upsell>
-    );
+  return (
+    <Upsell>
+      <Card key="cheapest" station={cheapestStation} type={CARD_TYPES.cheapest} />
+      <Card key="closest" station={closestStation} type={CARD_TYPES.closest} />
+    </Upsell>
+  );
 }
 
 UpsellCards.propTypes = {
-    stations: PropTypes.arrayOf(
-        PropTypes.shape({
-            station_name: PropTypes.string.isRequired,
-            street_address: PropTypes.string.isRequired,
-            distance: PropTypes.number.isRequired
-        })
-    ).isRequired
+  stations: PropTypes.arrayOf(
+    PropTypes.shape({
+      station_name: PropTypes.string.isRequired,
+      street_address: PropTypes.string.isRequired,
+      distance: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
 };
 
 export default UpsellCards;

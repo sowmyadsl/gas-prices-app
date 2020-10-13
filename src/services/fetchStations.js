@@ -1,6 +1,6 @@
-const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
-const BASE_URL = "https://developer.nrel.gov/api/alt-fuel-stations/";
-const apikey = "DX3mMU31V9LAvG1pdIyHwE4BXJnbUJnyjVkUQ1UC";
+const PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
+const BASE_URL = 'https://developer.nrel.gov/api/alt-fuel-stations/';
+const apikey = 'DX3mMU31V9LAvG1pdIyHwE4BXJnbUJnyjVkUQ1UC';
 
 export const getUrl = (latitude, longitude, zipcode) => {
   if (zipcode) {
@@ -14,6 +14,6 @@ export const fetchStations = async (latitude, longitude, zipcode) => {
   if (response.ok) {
     const getStationsResponse = response.json();
     return getStationsResponse;
-  } 
-  return response.text().then(text => {throw Error(text)});
+  }
+  return response.text().then((text) => { throw Error(text); });
 };

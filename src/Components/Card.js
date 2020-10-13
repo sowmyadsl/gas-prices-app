@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import CardIcon from "./CardIcon";
-import CardPrice from "./CardPrice";
-import CARD_TYPES from "../constants/cardTypes";
-import CardChip from "./Chip";
+import CardIcon from './CardIcon';
+import CardPrice from './CardPrice';
+import CARD_TYPES from '../constants/cardTypes';
+import CardChip from './Chip';
 
 const WithUpsell = styled.div`
   display: flex;
@@ -75,7 +75,7 @@ const CardAddressText = styled.div`
 `;
 
 /**
- *  Card Component 
+ *  Card Component
  * @param {object} props - component props
  * @returns {JSX} react component
  */
@@ -83,16 +83,16 @@ const Card = ({ station, type }) => {
   let upSellIndicator = null;
   switch (type) {
     case CARD_TYPES.cheapest:
-      upSellIndicator = <CardChip color={CARD_TYPES.cheapest}>Cheapest</CardChip>
+      upSellIndicator = <CardChip color={CARD_TYPES.cheapest}>Cheapest</CardChip>;
       break;
     case CARD_TYPES.closest:
-      upSellIndicator = <CardChip color={CARD_TYPES.closest}>Closest</CardChip>
+      upSellIndicator = <CardChip color={CARD_TYPES.closest}>Closest</CardChip>;
       break;
     default:
-  };
+  }
 
   return (
-    <WithUpsell data-testid='card'>
+    <WithUpsell data-testid="card">
       {upSellIndicator}
       <CardWrapper className="result-card" type={type}>
         <CardContent>
@@ -104,11 +104,17 @@ const Card = ({ station, type }) => {
             <CardAddressText>
               {station.street_address}
               <br />
-              {station.city} {station.state} {station.zip}
+              {station.city}
+              {' '}
+              {station.state}
+              {' '}
+              {station.zip}
             </CardAddressText>
             <CardDistanceText>
-              {station.distance.toFixed(2)} miles
-          </CardDistanceText>
+              {station.distance.toFixed(2)}
+              {' '}
+              miles
+            </CardDistanceText>
           </CardBody>
         </CardContent>
         <CardPrice price={station.price} />
@@ -118,8 +124,8 @@ const Card = ({ station, type }) => {
 };
 
 Card.propTypes = {
-  station: PropTypes.object.isRequired,
+  station: PropTypes.objectOf(PropTypes.any).isRequired,
   type: PropTypes.string.isRequired,
-}
+};
 
 export default Card;

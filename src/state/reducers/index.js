@@ -2,16 +2,16 @@ import {
   SET_LOCATION,
   GET_STATIONS_PENDING,
   GET_STATIONS_SUCCESS,
-  GET_STATIONS_FAILURE
-} from "../actions";
+  GET_STATIONS_FAILURE,
+} from '../actions';
 
 const initialState = {
-  latitude: "",
-  longitude: "",
-  zipcode: "",
+  latitude: '',
+  longitude: '',
+  zipcode: '',
   stations: [],
   loading: true,
-  error: ""
+  error: '',
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -22,25 +22,25 @@ const rootReducer = (state = initialState, action) => {
         ...initialState,
         latitude: action.latitude,
         longitude: action.longitude,
-        zipcode: action.zipcode
+        zipcode: action.zipcode,
       };
     case GET_STATIONS_PENDING:
       return {
         ...state,
-        loading: true
+        loading: true,
       };
     case GET_STATIONS_SUCCESS:
       return {
         ...state,
         stations: action.stations,
-        loading: false
+        loading: false,
       };
     case GET_STATIONS_FAILURE:
       return {
         ...state,
         loading: false,
         stations: [],
-        error: action.error
+        error: action.error,
       };
     default:
       return state;

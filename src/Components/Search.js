@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { FaSearchLocation } from "react-icons/fa";
-import { setLocation } from "../state/actions";
-import CurrentLocation from "./CurrentLocation";
+import { FaSearchLocation } from 'react-icons/fa';
+import { setLocation } from '../state/actions';
+import CurrentLocation from './CurrentLocation';
 
 const AppSearch = styled.input`
   border-radius: 0.5em;
@@ -36,7 +36,7 @@ const SearchWrapper = styled.form`
  * @param {object} props - Component props
  * @returns {JSX} react component
  */
-const Search = React.memo(({ dispatch, zipcode = "" }) => {
+const Search = React.memo(({ dispatch, zipcode = '' }) => {
   const [zip, setZip] = useState(zipcode);
 
   /**
@@ -50,11 +50,11 @@ const Search = React.memo(({ dispatch, zipcode = "" }) => {
 
   /**
    * gets the value of the location entered
-   * @param {*} e 
+   * @param {*} e
    */
   const searchLocation = (e) => {
     e.preventDefault();
-    dispatch(setLocation({ latitude: "", longitude: "", zipcode: zip }))
+    dispatch(setLocation({ latitude: '', longitude: '', zipcode: zip }));
   };
 
   return (
@@ -71,11 +71,10 @@ const Search = React.memo(({ dispatch, zipcode = "" }) => {
 Search.propTypes = {
   dispatch: PropTypes.func.isRequired,
   zipcode: PropTypes.string,
-}
+};
 
 Search.defaultProps = {
   zipcode: '',
-}
-
+};
 
 export default Search;

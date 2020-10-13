@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 /**
  * @returns position
- **/
+ * */
 function usePosition() {
   const [position, setPosition] = useState({});
   const defaultOptions = {
     enableHighAccuracy: true,
     timeout: Infinity,
-    maximumAge: 0
+    maximumAge: 0,
   };
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function usePosition() {
     return navigator.geolocation.getCurrentPosition(
       success,
       error,
-      defaultOptions
+      defaultOptions,
     );
   }, [defaultOptions]);
   return position;

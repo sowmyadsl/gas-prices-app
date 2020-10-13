@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Icon = styled.div`
   border-radius: 50%;
@@ -17,37 +17,37 @@ const CardLogo = styled.img`
 `;
 
 const availableStations = [
-  "walgreens",
-  "thprd",
-  "star",
-  "providence",
-  "space",
-  "touchmark",
-  "udp",
-  "the",
-  "star",
-  "murray",
-  "vernier",
-  "carr",
-  "kohl’s",
-  "only",
-  "uhaul",
-  "greenlots",
-  "chevron",
-  "shell",
-  "arco",
-  "costco"
+  'walgreens',
+  'thprd',
+  'star',
+  'providence',
+  'space',
+  'touchmark',
+  'udp',
+  'the',
+  'star',
+  'murray',
+  'vernier',
+  'carr',
+  'kohl’s',
+  'only',
+  'uhaul',
+  'greenlots',
+  'chevron',
+  'shell',
+  'arco',
+  'costco',
 ];
 
-const mapStationToLogoName = stationName => {
-  let name = stationName.toLowerCase().split(" ")[0];
-  name = name.replace(/[^\w\s]/gi, "");
-  name = availableStations.includes(name) ? name : "gasdigitalnetwork";
+const mapStationToLogoName = (stationName) => {
+  let name = stationName.toLowerCase().split(' ')[0];
+  name = name.replace(/[^\w\s]/gi, '');
+  name = availableStations.includes(name) ? name : 'gasdigitalnetwork';
   return name;
 };
 
 /**
- *  CardIcon Component 
+ *  CardIcon Component
  * @param {object} props - component props
  * @returns {JSX} react component
  */
@@ -61,7 +61,7 @@ function CardIcon({ station }) {
 }
 
 CardIcon.propTypes = {
-  station: PropTypes.object.isRequired,
-}
+  station: PropTypes.objectOf(PropTypes.any).isRequired,
+};
 
 export default CardIcon;

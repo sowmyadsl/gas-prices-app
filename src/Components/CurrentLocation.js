@@ -1,8 +1,8 @@
-import React  from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
-import { FaLocationArrow } from "react-icons/fa";
-import { setLocation } from "../state/actions";
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { FaLocationArrow } from 'react-icons/fa';
+import { setLocation } from '../state/actions';
 
 const StyledIcon = styled.button`
   font-size: 32px;
@@ -16,20 +16,20 @@ const StyledIcon = styled.button`
 `;
 
 /**
- *  CurrentLocation Component 
+ *  CurrentLocation Component
  * @param {object} props - component props
  * @returns {JSX} react component
  */
 function CurrentLocation({ dispatch }) {
   const resetZip = (e) => {
     e.preventDefault();
-    dispatch(setLocation({ zipcode: "" }));
+    dispatch(setLocation({ zipcode: '' }));
   };
 
   return (
-      <StyledIcon onClick={resetZip} data-testid="current-location">
-        <FaLocationArrow />
-      </StyledIcon>
+    <StyledIcon onClick={resetZip} data-testid="current-location">
+      <FaLocationArrow />
+    </StyledIcon>
   );
 }
 

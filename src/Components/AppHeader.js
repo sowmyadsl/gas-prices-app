@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import Search from "./Search";
-import UpsellCards from "./UpsellCards";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Search from './Search';
+import UpsellCards from './UpsellCards';
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -51,12 +51,12 @@ function AppHeader({ dispatch, stations, zipcode }) {
 
 AppHeader.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  stations: PropTypes.array.isRequired,
+  stations: PropTypes.arrayOf(PropTypes.any).isRequired,
   zipcode: PropTypes.string,
-}
+};
 
-AppHeader.defaultPropTypes = {
+AppHeader.defaultProps = {
   zipcode: '',
-}
+};
 
 export default AppHeader;

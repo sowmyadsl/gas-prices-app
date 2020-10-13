@@ -1,6 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import { BiErrorCircle } from "react-icons/bi"
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { BiErrorCircle } from 'react-icons/bi';
 
 const ErrorMessage = styled.div`
   display: flex;
@@ -15,9 +16,13 @@ const ErrorMessage = styled.div`
 
 const Error = ({ error }) => (
   <ErrorMessage>
-    <BiErrorCircle/>
+    <BiErrorCircle />
     {error}
   </ErrorMessage>
 );
+
+Error.propTypes = {
+  error: PropTypes.string.isRequired,
+};
 
 export default Error;
