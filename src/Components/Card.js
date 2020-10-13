@@ -18,9 +18,10 @@ const CardWrapper = styled.div`
   display: flex;
   flex-direction: row;
   background-color: ${(props) => props.type || CARD_TYPES.default};
-  box-shadow: 2px 2px 2px 2px #dadce0;
+  box-shadow: 0px 1px 2px #dadce0;
   transition: box-shadow 0.3s ease-in-out;
   border-radius: 5px;
+  border: 1px solid #c7c9cc;
   justify-content: space-between;
   align-items: center;
   width: 320px;

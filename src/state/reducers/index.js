@@ -6,8 +6,8 @@ import {
 } from "../actions";
 
 const initialState = {
-  latitude: null,
-  longitude: null,
+  latitude: "",
+  longitude: "",
   zipcode: "",
   stations: [],
   loading: true,
@@ -15,6 +15,7 @@ const initialState = {
 };
 
 const rootReducer = (state = initialState, action) => {
+  console.log(action);
   switch (action.type) {
     case SET_LOCATION:
       return {

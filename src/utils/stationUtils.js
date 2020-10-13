@@ -24,18 +24,15 @@ export const getClosestStation = stations => {
 };
 
 export const getStations = (
-  latitude = null,
-  longitude = null,
-  zipcode = null
+  latitude = "",
+  longitude = "",
+  zipcode = ""
 ) => {
   return async dispatch => {
     dispatch(getStationsPending());
     try {
       if ((latitude && longitude)|| zipcode) {
         const data = await fetchStations(latitude, longitude, zipcode);
-        if (!data) {
-          throw  ({error: `Unable to fetch data for Zip: ${zipcode}`}); 
-        }
         const filteredStations = data.fuel_stations.filter(
           station => station.access_code.toLowerCase() === "public"
         );

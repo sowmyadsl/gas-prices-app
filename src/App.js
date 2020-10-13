@@ -32,8 +32,12 @@ const App = props => {
   const { latitude, longitude } = usePosition();
 
   useEffect(() => {
-    zipcode ? dispatch(setLocation({ zipcode })) : dispatch(setLocation({ latitude, longitude }));
-    getStations(latitude, longitude, zipcode);
+    if (latitude && longitude) {
+      dispatch(setLocation({ latitude, longitude, zipcode: '' }));
+    }
+    if ((latitude && longitude) || zipcode) {
+      getStations(latitude, longitude, zipcode);
+    }
   }, [latitude, longitude, zipcode, dispatch, getStations]);
 
   return (

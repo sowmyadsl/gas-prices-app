@@ -42,9 +42,9 @@ const Search = React.memo(({ dispatch, zipcode = "" }) => {
   /**
    * Sets zipcode for given zip and updates the state
    */
-  useEffect(()=> {
+  useEffect(() => {
     setZip(zipcode);
-  },[zipcode]);
+  }, [zipcode]);
 
   const onZipcodeChange = (e) => setZip(e.target.value);
 
@@ -54,7 +54,7 @@ const Search = React.memo(({ dispatch, zipcode = "" }) => {
    */
   const searchLocation = (e) => {
     e.preventDefault();
-    dispatch(setLocation({ zipcode: zip }))
+    dispatch(setLocation({ latitude: "", longitude: "", zipcode: zip }))
   };
 
   return (

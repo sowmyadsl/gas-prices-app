@@ -14,7 +14,6 @@ export const fetchStations = async (latitude, longitude, zipcode) => {
   if (response.ok) {
     const getStationsResponse = response.json();
     return getStationsResponse;
-  }
-
-  return Promise.reject(await response.json());
+  } 
+  return response.text().then(text => {throw Error(text)});
 };

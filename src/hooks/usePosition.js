@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 /**
  * @returns position
  **/
-function usePosition(latitude, longitude) {
+function usePosition() {
   const [position, setPosition] = useState({});
   const defaultOptions = {
     enableHighAccuracy: true,
@@ -26,7 +26,7 @@ function usePosition(latitude, longitude) {
       error,
       defaultOptions
     );
-  }, [defaultOptions, latitude, longitude]);
+  }, [defaultOptions]);
   return position;
 }
 
