@@ -20,7 +20,7 @@ This is a simple gas prices finder application where the following features are 
 
 ### Error State
 
-![Error](/public/error-page.png)
+![Error](/public/Error-page.png)
 
 ### Empty State
 
